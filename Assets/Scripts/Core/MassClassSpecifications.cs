@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Planetery.Core
 {
     [CreateAssetMenu(fileName = "NewMassClassSpecifications", menuName = "Planetery/ClassSpecifications")]
-    public class MassClassCpecifications : ScriptableObject
+    public class MassClassSpecifications : ScriptableObject
     {
         [SerializeField] MassClass[] massClasses;
 
