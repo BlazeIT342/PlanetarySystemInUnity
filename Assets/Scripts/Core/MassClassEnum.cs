@@ -1,4 +1,4 @@
-namespace Planetery.Core
+namespace Planetary.Core
 {
     public enum MassClassEnum
     {

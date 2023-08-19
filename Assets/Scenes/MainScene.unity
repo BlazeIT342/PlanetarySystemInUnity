@@ -671,7 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   massClassSpecifications: {fileID: 11400000, guid: 5cf1ddd40176dc64b91064777cae689e,
     type: 2}
-  planetPrefab: {fileID: 2620319399637783179, guid: f98ddc51cefd7a84baa2eaae18c9779d,
+  planetPrefab: {fileID: 5363122003806311474, guid: a88595b88c5c7f14b96d5ccc54a5bf8b,
     type: 3}
   planetSystemPrefab: {fileID: 7318467912793890174, guid: 4e3265f99e921454f8f7a5121bfd4546,
     type: 3}

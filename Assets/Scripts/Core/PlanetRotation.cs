@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Planetery.Core
+namespace Planetary.Core
 {
     public class PlanetRotation : MonoBehaviour
     {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Planetery.Core
+namespace Planetary.Core
 {
-    [CreateAssetMenu(fileName = "NewMassClassSpecifications", menuName = "Planetery/ClassSpecifications")]
+    [CreateAssetMenu(fileName = "NewMassClassSpecifications", menuName = "Planetary/ClassSpecifications")]
     public class MassClassSpecifications : ScriptableObject
     {
         [SerializeField] MassClass[] massClasses;
