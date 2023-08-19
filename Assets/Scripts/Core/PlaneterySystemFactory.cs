@@ -21,8 +21,12 @@ namespace Planetery.Core
                 CreatePlanet(planeterySystem, randomMassClass, randomMass);
                 totalMass += randomMass;
             }
-            planeterySystem.SetPlanets();
             return planeterySystem;
+        }
+
+        public void CreateSystem()
+        {
+            Create(1000);
         }
 
         private PlaneterySystem CreatePlanetarySystem()
@@ -33,7 +37,7 @@ namespace Planetery.Core
 
         private void CreatePlanet(PlaneterySystem planeterySystem, MassClassSpecifications.MassClass massClass, float mass)
         {
-            GameObject newPlanet = Instantiate(planetPrefab.gameObject); 
+            PlaneteryObject newPlanet = Instantiate(planetPrefab, planeterySystem.transform); 
 
             IPlaneteryObject planetComponent = newPlanet.GetComponent<IPlaneteryObject>();
 
@@ -41,10 +45,8 @@ namespace Planetery.Core
 
             float massPercentage = (mass - massClass.massFrom) / (massClass.massTo - massClass.massFrom);
             float newSize = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage);
-
-            planetComponent.size = newSize;
+            newPlanet.transform.localScale = Vector3.one * newSize;
             planeterySystem.planeteryObjectsList.Add(planetComponent);
-
         }
     }
 }

@@ -5,11 +5,13 @@ namespace Planetery.Core
 {
     public class PlaneteryObject : MonoBehaviour, IPlaneteryObject
     {
-        float rotationSpeed = 20f;
-        [SerializeField] float orbitRadius = 5f;
-        public MassClassEnum massClass { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public double mass { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public double size { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        [SerializeField] float rotationSpeed = 20f;
+        [SerializeField] float orbitRadius = 40f;
+        public MassClassEnum massClass { get => massClassEnum; set => _ = massClassEnum; }
+        public double mass { get => planetMass; set => _ = planetMass; }
+
+        MassClassEnum massClassEnum;
+        double planetMass;
 
         private void Start()
         {

@@ -12,7 +12,7 @@ namespace Planetery.Core
 
         private void Update()
         {
-            UpdateSystem(Time.deltaTime);
+            UpdateSystem(Time.time);
         }
 
         public void UpdateSystem(float deltaTime)
@@ -21,11 +21,6 @@ namespace Planetery.Core
             {
                 planeteryObject.UpdateTransform(transform, deltaTime);               
             }
-        }
-
-        public void SetPlanets()
-        {
-            planeteryObjects = planeteryObjectsList;
         }
     }
 }
