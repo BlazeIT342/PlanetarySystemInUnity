@@ -9,6 +9,7 @@ namespace Planetery.Core
         [SerializeField] float orbitRadius = 5f;
         public MassClassEnum massClass { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public double mass { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public double size { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         private void Start()
         {

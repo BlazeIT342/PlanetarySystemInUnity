@@ -7,14 +7,20 @@ namespace Planetery.Core
     {
         [SerializeField] MassClass[] massClasses;
 
-        [System.Serializable]
-        class MassClass
+        public MassClass GetRandomMassClass()
         {
-            [SerializeField] MassClassEnum massClassEnum;
-            [SerializeField] float massFrom; 
-            [SerializeField] float massTo;
-            [SerializeField] float radiusFrom;
-            [SerializeField] float radiusTo;
+            int randomIndex = Random.Range(0, massClasses.Length);
+            return massClasses[randomIndex];
+        }
+
+        [System.Serializable]
+        public class MassClass
+        {
+            [SerializeField] public MassClassEnum massClassEnum;
+            [SerializeField] public float massFrom; 
+            [SerializeField] public float massTo;
+            [SerializeField] public float radiusFrom;
+            [SerializeField] public float radiusTo;
         }
     }
 }

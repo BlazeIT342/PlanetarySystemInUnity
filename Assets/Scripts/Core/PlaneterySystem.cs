@@ -6,20 +6,27 @@ namespace Planetery.Core
 {
     public class PlaneterySystem : MonoBehaviour, IPlaneterySystem
     {
-        public Transform orbitCenter;
-        public float orbitRadius;
-        public float minDistanceBetweenPlanets = 1f;
-
-        List<IPlaneteryObject> planeteryObjectsList = new List<IPlaneteryObject>();
+        public List<IPlaneteryObject> planeteryObjectsList = new List<IPlaneteryObject>();
 
         public IEnumerable<IPlaneteryObject> planeteryObjects { get => planeteryObjectsList; set => _ = planeteryObjectsList; }
+
+        private void Update()
+        {
+            UpdateSystem(Time.deltaTime);
+        }
 
         public void UpdateSystem(float deltaTime)
         {
             foreach (IPlaneteryObject planeteryObject in planeteryObjects)
             {
-                planeteryObject.UpdateTransform(transform, deltaTime);
+                planeteryObject.UpdateTransform(transform, deltaTime);               
             }
+        }
+
+        public void SetPlanets(List<IPlaneteryObject> newPlanets)
+        {
+            planeteryObjectsList.Clear();
+            planeteryObjectsList.AddRange(newPlanets);
         }
     }
 }
