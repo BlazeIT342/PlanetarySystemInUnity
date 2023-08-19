@@ -1,5 +1,4 @@
 using Planetery.Interfaces;
-using System.Collections;
 using UnityEngine;
 
 namespace Planetery.Core
@@ -7,12 +6,12 @@ namespace Planetery.Core
     public class PlaneterySystemFactory : MonoBehaviour, IPlaneterySystemFactory
     {
         public MassClassSpecifications massClassSpecifications;
-        public GameObject planetPrefab;
+        public PlaneteryObject planetPrefab;
         public PlaneterySystem planetSystemPrefab;
 
         public IPlaneterySystem Create(double mass)
         {
-            IPlaneterySystem planeterySystem = CreatePlanetarySystem();
+            PlaneterySystem planeterySystem = CreatePlanetarySystem();
             double totalMass = 0;
             while (mass > totalMass)
             {
@@ -22,18 +21,19 @@ namespace Planetery.Core
                 CreatePlanet(planeterySystem, randomMassClass, randomMass);
                 totalMass += randomMass;
             }
+            planeterySystem.SetPlanets();
             return planeterySystem;
         }
 
-        private IPlaneterySystem CreatePlanetarySystem()
+        private PlaneterySystem CreatePlanetarySystem()
         {
             PlaneterySystem instance = Instantiate(planetSystemPrefab);
             return instance;
         }
 
-        private PlaneterySystem CreatePlanet(IPlaneterySystem planeterySystem, MassClassSpecifications.MassClass massClass, float mass)
+        private void CreatePlanet(PlaneterySystem planeterySystem, MassClassSpecifications.MassClass massClass, float mass)
         {
-            GameObject newPlanet = Instantiate(planetPrefab); 
+            GameObject newPlanet = Instantiate(planetPrefab.gameObject); 
 
             IPlaneteryObject planetComponent = newPlanet.GetComponent<IPlaneteryObject>();
 
@@ -43,6 +43,7 @@ namespace Planetery.Core
             float newSize = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage);
 
             planetComponent.size = newSize;
+            planeterySystem.planeteryObjectsList.Add(planetComponent);
 
         }
     }

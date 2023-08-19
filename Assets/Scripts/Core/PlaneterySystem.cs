@@ -23,10 +23,9 @@ namespace Planetery.Core
             }
         }
 
-        public void SetPlanets(List<IPlaneteryObject> newPlanets)
+        public void SetPlanets()
         {
-            planeteryObjectsList.Clear();
-            planeteryObjectsList.AddRange(newPlanets);
+            planeteryObjects = planeteryObjectsList;
         }
     }
 }
