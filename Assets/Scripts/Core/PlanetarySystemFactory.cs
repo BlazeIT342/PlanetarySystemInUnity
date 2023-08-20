@@ -1,4 +1,5 @@
 using Planetary.Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Planetary.Core
@@ -8,10 +9,12 @@ namespace Planetary.Core
         public MassClassSpecifications massClassSpecifications;
         public PlanetaryObject planetPrefab;
         public PlanetarySystem planetSystemPrefab;
+        List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
 
         public IPlanetarySystem Create(double mass)
         {
             PlanetarySystem planetarySystem = CreatePlanetarySystem();
+            planetSystems.Add(planetarySystem);
             double totalMass = 0;
             while (mass > totalMass)
             {
@@ -26,7 +29,14 @@ namespace Planetary.Core
 
         public void CreateSystem()
         {
+            if (planetSystems.Count != 0)
+            {
+
+                Destroy(planetSystems[0].gameObject);
+                planetSystems.Remove(planetSystems[0]);
+            }
             Create(100);
+
         }
 
         private PlanetarySystem CreatePlanetarySystem()
@@ -38,21 +48,24 @@ namespace Planetary.Core
         private void CreatePlanet(PlanetarySystem planetarySystem, MassClassSpecifications.MassClass massClass, float mass)
         {
             PlanetaryObject newPlanet = Instantiate(planetPrefab, planetarySystem.transform); 
-
             IPlanetaryObject planetComponent = newPlanet.GetComponent<IPlanetaryObject>();
 
             planetComponent.mass = mass;
 
             float massPercentage = (mass - massClass.massFrom) / (massClass.massTo - massClass.massFrom);
-            float newSize = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage);
-            newPlanet.transform.localScale = Vector3.one * newSize;
+            planetComponent.size = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage);
+
             if (planetarySystem.planetaryObjectsList.Count == 0)
             {
-                planetComponent.orbitalOffset = newSize;
+                planetComponent.orbitalOffset = planetComponent.size;
                 planetarySystem.planetaryObjectsList.Add(planetComponent);
                 return;
             }
-            planetComponent.orbitalOffset = planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count-1].orbitalOffset + newSize;
+            planetComponent.orbitalOffset = 
+                planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count- 1].size 
+                + planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count - 1].orbitalOffset 
+                + planetComponent.size / 1.5f;
+            //planetComponent.orbitalOffset = planetComponent.size;
             planetarySystem.planetaryObjectsList.Add(planetComponent);
         }
     }
