@@ -7,11 +7,7 @@ namespace Planetary.Core
     {
         public MassClassEnum massClass { get => massClassEnum; set => massClassEnum = value; }
         public double mass { get => planetMass; set => planetMass = value; }
-        public float orbitalOffset 
-        { 
-            get => orbitalOffsetValue; 
-            set => orbitalOffsetValue = value; 
-        }
+        public float orbitalOffset { get => orbitalOffsetValue; set => orbitalOffsetValue = value; }
         public float size { get => planetSize; set => planetSize = value; }
 
         [SerializeField] float rotationSpeed = 20f;

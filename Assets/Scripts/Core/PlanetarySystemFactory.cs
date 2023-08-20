@@ -96,6 +96,11 @@ namespace Planetary.Core
         {
             if (double.TryParse(inputField.text, out double maxTotalMass))
             {
+                if (maxTotalMass > 30000)
+                {
+                    Debug.Log("Very high value!");
+                    return;
+                }
                 Create(maxTotalMass);
             }
             else
