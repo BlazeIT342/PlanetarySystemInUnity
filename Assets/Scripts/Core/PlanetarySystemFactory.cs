@@ -16,7 +16,6 @@ namespace Planetary.Core
         [SerializeField] PlanetarySystem planetSystemPrefab;
         [SerializeField] PlanetaryObject planetPrefab;
 
-
         List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
         List<IPlanetaryObject> planetObjects = new List<IPlanetaryObject>();
 

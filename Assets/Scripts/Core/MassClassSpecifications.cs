@@ -22,7 +22,7 @@ namespace Planetary.Core
         public float GetMaxMass()
         {
             float maxValue = float.MinValue;
-            foreach (var massClass in massClasses)
+            foreach (MassClass massClass in massClasses)
             {
                 if (massClass.massTo > maxValue)
                 {
@@ -35,7 +35,7 @@ namespace Planetary.Core
         public float GetMinMass()
         {
             float minValue = float.MaxValue;
-            foreach (var massClass in massClasses)
+            foreach (MassClass massClass in massClasses)
             {
                 if (massClass.massFrom < minValue)
                 {
