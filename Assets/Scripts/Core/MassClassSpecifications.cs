@@ -7,12 +7,6 @@ namespace Planetary.Core
     {
         [SerializeField] MassClass[] massClasses;
 
-        public MassClass GetRandomMassClass()
-        {
-            int randomIndex = Random.Range(0, massClasses.Length);
-            return massClasses[randomIndex];
-        }
-
         public MassClass GenerateClassByMass(float mass)
         {
             foreach (MassClass massClass in massClasses)
@@ -23,6 +17,32 @@ namespace Planetary.Core
                 }
             }
             return null;
+        }
+
+        public float GetMaxMass()
+        {
+            float maxValue = -1;
+            foreach (var massClass in massClasses)
+            {
+                if (massClass.massTo > maxValue)
+                {
+                    maxValue = massClass.massTo;
+                }
+            }
+            return maxValue;
+        }
+
+        public float GetMinMass()
+        {
+            float minValue = 9999;
+            foreach (var massClass in massClasses)
+            {
+                if (massClass.massFrom < minValue)
+                {
+                    minValue = massClass.massFrom;
+                }
+            }
+            return minValue;
         }
 
         [System.Serializable]

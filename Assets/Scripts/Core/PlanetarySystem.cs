@@ -6,9 +6,10 @@ namespace Planetary.Core
 {
     public class PlanetarySystem : MonoBehaviour, IPlanetarySystem
     {
-        public List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
-
         public IEnumerable<IPlanetaryObject> planetaryObjects { get => planetaryObjectsList; set => planetaryObjectsList = (List<IPlanetaryObject>)value; }
+        Transform IPlanetarySystem.transform { get => transform; }
+
+        public List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
 
         private void Update()
         {
