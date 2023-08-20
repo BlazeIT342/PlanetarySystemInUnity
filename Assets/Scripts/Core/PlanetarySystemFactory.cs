@@ -78,7 +78,7 @@ namespace Planetary.Core
             ConfigurePlanet(planetarySystem, planetObject, massClass, mass);
             AddPlanetToSystem(planetarySystem, planetObject);
         }
-      
+
         private double CalculateMaxPlanetMass(double totalMass)
         {
             if (totalMass < massClassSpecifications.GetMaxMass())
@@ -118,7 +118,7 @@ namespace Planetary.Core
             }
 
             double mass = 0;
-            foreach(var item in planetSystems)
+            foreach (var item in planetSystems)
             {
                 foreach (var planet in item.GetComponentsInChildren<PlanetaryObject>())
                 {

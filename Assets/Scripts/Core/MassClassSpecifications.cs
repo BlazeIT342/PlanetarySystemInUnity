@@ -49,7 +49,7 @@ namespace Planetary.Core
         public class MassClass
         {
             [SerializeField] public MassClassEnum massClassEnum;
-            [SerializeField] public float massFrom; 
+            [SerializeField] public float massFrom;
             [SerializeField] public float massTo;
             [SerializeField] public float radiusFrom;
             [SerializeField] public float radiusTo;
