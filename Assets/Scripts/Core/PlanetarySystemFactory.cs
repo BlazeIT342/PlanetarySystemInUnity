@@ -51,6 +51,7 @@ namespace Planetary.Core
             IPlanetaryObject planetComponent = newPlanet.GetComponent<IPlanetaryObject>();
 
             planetComponent.mass = mass;
+            planetComponent.massClass = massClass.massClassEnum;
 
             float massPercentage = (mass - massClass.massFrom) / (massClass.massTo - massClass.massFrom);
             planetComponent.size = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage);
@@ -61,11 +62,8 @@ namespace Planetary.Core
                 planetarySystem.planetaryObjectsList.Add(planetComponent);
                 return;
             }
-            planetComponent.orbitalOffset = 
-                planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count- 1].size 
-                + planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count - 1].orbitalOffset 
-                + planetComponent.size / 1.5f;
-            //planetComponent.orbitalOffset = planetComponent.size;
+            IPlanetaryObject prevPlanet = planetarySystem.planetaryObjectsList[planetarySystem.planetaryObjectsList.Count - 1];
+            planetComponent.orbitalOffset = prevPlanet.size + prevPlanet.orbitalOffset + planetComponent.size / 1.5f;
             planetarySystem.planetaryObjectsList.Add(planetComponent);
         }
     }

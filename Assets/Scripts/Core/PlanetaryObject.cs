@@ -17,9 +17,9 @@ namespace Planetary.Core
         [SerializeField] float rotationSpeed = 20f;
         [SerializeField] GameObject planet;
 
-        MassClassEnum massClassEnum;
-        double planetMass;
-        float planetSize;
+        [SerializeField] MassClassEnum massClassEnum;
+        [SerializeField] double planetMass;
+        [SerializeField] float planetSize;
         public float orbitalOffsetValue;
 
         private void Start()

@@ -13,6 +13,18 @@ namespace Planetary.Core
             return massClasses[randomIndex];
         }
 
+        public MassClass GenerateClassByMass(float mass)
+        {
+            foreach (MassClass massClass in massClasses)
+            {
+                if (mass >= massClass.massFrom && mass <= massClass.massTo)
+                {
+                    return massClass;
+                }
+            }
+            return null;
+        }
+
         [System.Serializable]
         public class MassClass
         {

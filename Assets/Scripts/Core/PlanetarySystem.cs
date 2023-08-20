@@ -8,7 +8,7 @@ namespace Planetary.Core
     {
         public List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
 
-        public IEnumerable<IPlanetaryObject> planetaryObjects { get => planetaryObjectsList; set => _ = planetaryObjectsList; }
+        public IEnumerable<IPlanetaryObject> planetaryObjects { get => planetaryObjectsList; set => planetaryObjectsList = (List<IPlanetaryObject>)value; }
 
         private void Update()
         {
