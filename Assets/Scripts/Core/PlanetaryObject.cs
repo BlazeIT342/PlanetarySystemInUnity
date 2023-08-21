@@ -10,12 +10,14 @@ namespace Planetary.Core
         public float radius { get => planetRadius; set => planetRadius = value; }
         public float orbitalOffset { get => orbitalOffsetValue; set => orbitalOffsetValue = value; }
 
-        [SerializeField] float rotationSpeed = 100f;
-        [SerializeField] GameObject planet;
-        [SerializeField] MassClassEnum massClassEnum;
-        [SerializeField] double planetMass;
-        [SerializeField] float planetRadius;
-        [SerializeField] float orbitalOffsetValue;
+        GameObject planet;
+        MassClassEnum massClassEnum;
+
+        double planetMass;             
+        float planetRadius;
+        float orbitalOffsetValue;
+
+        float rotationSpeed = 100f;
 
         private void Start()
         {

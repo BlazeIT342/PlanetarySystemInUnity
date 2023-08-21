@@ -18,9 +18,9 @@ namespace Planetary.Core
 
         public void UpdateSystem(float deltaTime)
         {
-            foreach (IPlanetaryObject planeteryObject in planetaryObjects)
+            foreach (IPlanetaryObject planetaryObject in planetaryObjects)
             {
-                planeteryObject.RotationUpdate(deltaTime);
+                planetaryObject.RotationUpdate(deltaTime);
             }
         }
     }

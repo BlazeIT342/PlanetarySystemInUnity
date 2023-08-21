@@ -28,19 +28,24 @@ namespace Planetary.Core
             {
                 if (maxTotalMass > MaxPlanetSystemAllowableMass)
                 {
-                    ErrorMessage("Very large mass!");
+                    ShowMessage("Very large mass!");
+                    return 0;
+                }
+                if (maxTotalMass == 0)
+                {
+                    ShowMessage("Wrong mass input!");
                     return 0;
                 }
                 return maxTotalMass;
             }
             else
             {
-                ErrorMessage("Wrong mass input!");
+                ShowMessage("Wrong mass input!");
                 return 0;
             }
         }
 
-        private void ErrorMessage(string text)
+        private void ShowMessage(string text)
         {
             errorText.text = text;
             errorText.GetComponent<Animation>().Stop();
