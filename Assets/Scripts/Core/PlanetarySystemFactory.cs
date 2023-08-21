@@ -1,30 +1,24 @@
 using Planetary.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 namespace Planetary.Core
 {
     public class PlanetarySystemFactory : MonoBehaviour, IPlanetarySystemFactory
     {
-        const int MaxPlanetSystemAllowableMass = 1000000;
         const float PlanetMassMultiplier = 1.5f;
 
-        [SerializeField] TMP_InputField inputField;
         [SerializeField] MassClassSpecifications massClassSpecifications;
         [SerializeField] PlanetarySystem planetSystemPrefab;
         [SerializeField] PlanetaryObject planetPrefab;
 
-        List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
         List<IPlanetaryObject> planetObjects = new List<IPlanetaryObject>();
 
         public IPlanetarySystem Create(double mass)
         {
             ClearPlanetLists();
-
             PlanetarySystem planetarySystem = CreatePlanetarySystem();
-            planetSystems.Add(planetarySystem);
 
             CreatePlanets(mass, planetarySystem);
 
@@ -34,11 +28,6 @@ namespace Planetary.Core
         private void ClearPlanetLists()
         {
             planetObjects.Clear();
-            if (planetSystems.Count != 0)
-            {
-                Destroy(planetSystems[0].gameObject);
-                planetSystems.Remove(planetSystems[0]);
-            }
         }
 
         private PlanetarySystem CreatePlanetarySystem()
@@ -101,32 +90,7 @@ namespace Planetary.Core
             return Random.Range(massClassSpecifications.GetMinMass(), (float)maxPlanetMass);
         }
 
-        public void CreateSystem()
-        {
-            if (double.TryParse(inputField.text, out double maxTotalMass))
-            {
-                if (maxTotalMass > MaxPlanetSystemAllowableMass)
-                {
-                    Debug.Log("Very high value!");
-                    return;
-                }
-                Create(maxTotalMass);
-            }
-            else
-            {
-                Debug.Log("Invalid input for value");
-            }
 
-            double mass = 0;
-            foreach (var item in planetSystems)
-            {
-                foreach (var planet in item.GetComponentsInChildren<PlanetaryObject>())
-                {
-                    mass += planet.mass;
-                }
-            }
-            Debug.Log(mass);
-        }
 
         private IPlanetaryObject InstantiatePlanet(IPlanetarySystem planetarySystem)
         {
