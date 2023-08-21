@@ -7,6 +7,6 @@ namespace Planetary.Interfaces
     {
         public Transform transform { get; }
         public IEnumerable<IPlanetaryObject> planetaryObjects { get; set; }
-        public void UpdateSystem(float deltaTime);
+        public void UpdatePlanetarySystem(float deltaTime);
     }
 }

@@ -13,10 +13,10 @@ namespace Planetary.Core
 
         private void Update()
         {
-            UpdateSystem(Time.deltaTime);
+            UpdatePlanetarySystem(Time.deltaTime);
         }
 
-        public void UpdateSystem(float deltaTime)
+        public void UpdatePlanetarySystem(float deltaTime)
         {
             foreach (IPlanetaryObject planetaryObject in planetaryObjects)
             {
