@@ -13,7 +13,7 @@ namespace Planetary.Core
         [SerializeField] TMP_InputField inputField;
         [SerializeField] TextMeshProUGUI errorText;
 
-        List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
+        public List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
 
         public void CreateNewPlanetarySystem()
         {

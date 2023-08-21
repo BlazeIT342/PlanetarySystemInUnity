@@ -1,6 +1,6 @@
 using Planetary.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using UnityEngine;
 
 namespace Planetary.Core
@@ -59,13 +59,15 @@ namespace Planetary.Core
                     break;
                 }
             }
+            planetarySystem.planetaryObjects = planetObjects;
         }
 
         private void CreatePlanet(IPlanetarySystem planetarySystem, MassClassSpecifications.MassClass massClass, float mass)
         {
             IPlanetaryObject planetObject = InstantiatePlanet(planetarySystem);
             ConfigurePlanet(planetarySystem, planetObject, massClass, mass);
-            AddPlanetToSystem(planetarySystem, planetObject);
+            //AddPlanetToSystem(planetarySystem, planetObject);
+            planetObjects.Add(planetObject);
         }
 
         private double CalculateMaxPlanetMass(double totalMass)
@@ -105,13 +107,13 @@ namespace Planetary.Core
             float massPercentage = (mass - massClass.massFrom) / (massClass.massTo - massClass.massFrom);
             planetObject.radius = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage) / 2;
 
-            if (planetarySystem.planetaryObjects.Count() == 0)
+            if (planetObjects.Count == 0)
             {
                 planetObject.orbitalOffset = planetObject.radius * PlanetMassMultiplier;
             }
             else
             {
-                IPlanetaryObject prevPlanet = planetarySystem.planetaryObjects.Last();
+                IPlanetaryObject prevPlanet = planetObjects[planetObjects.Count - 1];
                 planetObject.orbitalOffset = prevPlanet.radius + prevPlanet.orbitalOffset + planetObject.radius * PlanetMassMultiplier;
             }
         }

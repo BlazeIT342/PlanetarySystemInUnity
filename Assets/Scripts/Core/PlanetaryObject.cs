@@ -10,10 +10,11 @@ namespace Planetary.Core
         public float radius { get => planetRadius; set => planetRadius = value; }
         public float orbitalOffset { get => orbitalOffsetValue; set => orbitalOffsetValue = value; }
 
-        GameObject planet;
+        [SerializeField] GameObject planet;
+
         MassClassEnum massClassEnum;
 
-        double planetMass;             
+        double planetMass;
         float planetRadius;
         float orbitalOffsetValue;
 
