@@ -47,6 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   planet: {fileID: 5363122004775008204}
+  massClassEnum: 0
+  planetMass: 0
+  planetRadius: 0
+  orbitalOffsetValue: 0
 --- !u!1 &5363122004775008204
 GameObject:
   m_ObjectHideFlags: 0
