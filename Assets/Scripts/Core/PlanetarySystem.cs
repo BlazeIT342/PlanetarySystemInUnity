@@ -11,9 +11,9 @@ namespace Planetary.Core
 
         public List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
 
-        private void FixedUpdate()
+        private void Update()
         {
-            UpdateSystem(Time.fixedDeltaTime);
+            UpdateSystem(Time.deltaTime);
         }
 
         public void UpdateSystem(float deltaTime)
