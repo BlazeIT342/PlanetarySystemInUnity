@@ -1,6 +1,5 @@
 using Planetary.Interfaces;
 using System.Collections.Generic;
-//using System.Linq;
 using UnityEngine;
 
 namespace Planetary.Core
@@ -66,7 +65,6 @@ namespace Planetary.Core
         {
             IPlanetaryObject planetObject = InstantiatePlanet(planetarySystem);
             ConfigurePlanet(planetarySystem, planetObject, massClass, mass);
-            //AddPlanetToSystem(planetarySystem, planetObject);
             planetObjects.Add(planetObject);
         }
 
@@ -116,12 +114,6 @@ namespace Planetary.Core
                 IPlanetaryObject prevPlanet = planetObjects[planetObjects.Count - 1];
                 planetObject.orbitalOffset = prevPlanet.radius + prevPlanet.orbitalOffset + planetObject.radius * PlanetMassMultiplier;
             }
-        }
-
-        private void AddPlanetToSystem(IPlanetarySystem planetarySystem, IPlanetaryObject planetObject)
-        {
-            planetObjects.Add(planetObject);
-            planetarySystem.planetaryObjects = planetObjects;
         }
     }
 }
