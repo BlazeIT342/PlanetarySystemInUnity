@@ -9,7 +9,7 @@ namespace Planetary.Core
         public IEnumerable<IPlanetaryObject> planetaryObjects { get => planetaryObjectsList; set => planetaryObjectsList = (List<IPlanetaryObject>)value; }
         Transform IPlanetarySystem.transform { get => transform; }
 
-        public List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
+        List<IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
 
         private void Update()
         {
