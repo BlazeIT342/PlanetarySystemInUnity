@@ -11,6 +11,7 @@ namespace Planetary.Core
 
         [SerializeField] PlanetarySystemFactory planetarySystemFactory;
         [SerializeField] TMP_InputField inputField;
+        [SerializeField] TextMeshProUGUI errorText;
 
         List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
 
@@ -27,16 +28,23 @@ namespace Planetary.Core
             {
                 if (maxTotalMass > MaxPlanetSystemAllowableMass)
                 {
-                    Debug.Log("Very high value!");
+                    ErrorMessage("Very large mass!");
                     return 0;
                 }
                 return maxTotalMass;
             }
             else
             {
-                Debug.Log("Invalid input for value");
+                ErrorMessage("Wrong mass input!");
                 return 0;
             }
+        }
+
+        private void ErrorMessage(string text)
+        {
+            errorText.text = text;
+            errorText.GetComponent<Animation>().Stop();
+            errorText.GetComponent<Animation>().Play();
         }
 
         private void ClearPlanetLists()
