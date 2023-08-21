@@ -64,7 +64,7 @@ namespace Planetary.Core
         private void CreatePlanet(IPlanetarySystem planetarySystem, MassClassSpecifications.MassClass massClass, float mass)
         {
             IPlanetaryObject planetObject = InstantiatePlanet(planetarySystem);
-            ConfigurePlanet(planetarySystem, planetObject, massClass, mass);
+            ConfigurePlanet(planetObject, massClass, mass);
             planetObjects.Add(planetObject);
         }
 
@@ -97,7 +97,7 @@ namespace Planetary.Core
             return Instantiate(planetPrefab, planetarySystem.transform);
         }
 
-        private void ConfigurePlanet(IPlanetarySystem planetarySystem, IPlanetaryObject planetObject, MassClassSpecifications.MassClass massClass, float mass)
+        private void ConfigurePlanet(IPlanetaryObject planetObject, MassClassSpecifications.MassClass massClass, float mass)
         {
             planetObject.mass = mass;
             planetObject.massClass = massClass.massClassEnum;
