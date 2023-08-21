@@ -105,7 +105,7 @@ namespace Planetary.Core
             float massPercentage = (mass - massClass.massFrom) / (massClass.massTo - massClass.massFrom);
             planetObject.radius = Mathf.Lerp(massClass.radiusFrom, massClass.radiusTo, massPercentage) / 2;
 
-            if (!planetarySystem.planetaryObjects.Any())
+            if (planetarySystem.planetaryObjects.Count() == 0)
             {
                 planetObject.orbitalOffset = planetObject.radius * PlanetMassMultiplier;
             }
