@@ -17,7 +17,7 @@ namespace Planetary.Core
 
         public IPlanetarySystem Create(double mass)
         {
-            ClearPlanetLists();
+            ClearPlanetList();
             PlanetarySystem planetarySystem = CreatePlanetarySystem();
 
             CreatePlanets(mass, planetarySystem);
@@ -25,7 +25,7 @@ namespace Planetary.Core
             return planetarySystem;
         }
 
-        private void ClearPlanetLists()
+        private void ClearPlanetList()
         {
             planetObjects.Clear();
         }
