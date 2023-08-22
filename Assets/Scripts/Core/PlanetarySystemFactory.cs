@@ -90,8 +90,6 @@ namespace Planetary.Core
             return Random.Range(massClassSpecifications.GetMinMass(), (float)maxPlanetMass);
         }
 
-
-
         private IPlanetaryObject InstantiatePlanet(IPlanetarySystem planetarySystem)
         {
             return Instantiate(planetPrefab, planetarySystem.transform);
