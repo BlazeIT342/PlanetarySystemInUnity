@@ -13,7 +13,7 @@ namespace Planetary.Core
         public IEnumerable<IPlanetaryObject> planetaryObjects
         {
             get => planetaryObjectsList;
-            set => planetaryObjectsList.AddRange(value ?? new List<IPlanetaryObject>());
+            set => planetaryObjectsList = new List<IPlanetaryObject>(value);
         }
 
         private void Update()
