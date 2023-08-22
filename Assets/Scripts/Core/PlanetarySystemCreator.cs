@@ -11,7 +11,7 @@ namespace Planetary.Core
 
         [SerializeField] PlanetarySystemFactory planetarySystemFactory;
         [SerializeField] TMP_InputField inputField;
-        [SerializeField] TextMeshProUGUI errorText;
+        [SerializeField] TextMeshProUGUI textMessage;
 
         List<PlanetarySystem> planetSystems = new List<PlanetarySystem>();
 
@@ -47,9 +47,9 @@ namespace Planetary.Core
 
         private void ShowMessage(string text)
         {
-            errorText.text = text;
-            errorText.GetComponent<Animation>().Stop();
-            errorText.GetComponent<Animation>().Play();
+            textMessage.text = text;
+            textMessage.GetComponent<Animation>().Stop();
+            textMessage.GetComponent<Animation>().Play();
         }
 
         private void ClearPlanetLists()
