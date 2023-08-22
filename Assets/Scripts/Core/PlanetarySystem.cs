@@ -22,15 +22,9 @@ namespace Planetary.Core
 
         public void UpdatePlanetarySystem(float deltaTime)
         {
-            if (planetaryObjects != null)
+            foreach (IPlanetaryObject planetaryObject in planetaryObjects)
             {
-                foreach (IPlanetaryObject planetaryObject in planetaryObjects)
-                {
-                    if (planetaryObject != null)
-                    {
-                        planetaryObject.RotationUpdate(deltaTime);
-                    }
-                }
+                planetaryObject.RotationUpdate(deltaTime);
             }
         }
     }
