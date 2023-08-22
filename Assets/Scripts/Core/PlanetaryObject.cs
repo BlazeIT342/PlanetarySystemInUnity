@@ -44,7 +44,5 @@ namespace Planetary.Core
             planet.GetComponent<Renderer>().material.color = randomColor;
             planet.GetComponent<TrailRenderer>().material.color = randomColor;
         }
-
-
     }
 }
