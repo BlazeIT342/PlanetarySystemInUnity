@@ -1,11 +1,10 @@
 using Planetary.Interfaces;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Planetary.Core
 {
-    public class PlanetarySystem : MonoBehaviour, IPlanetarySystem, IEnumerable<IPlanetaryObject>
+    public class PlanetarySystem : MonoBehaviour, IPlanetarySystem
     {
         Transform IPlanetarySystem.transform { get => transform; }
 
@@ -23,20 +22,16 @@ namespace Planetary.Core
 
         public void UpdatePlanetarySystem(float deltaTime)
         {
-            foreach (IPlanetaryObject planetaryObject in planetaryObjects)
+            if (planetaryObjects != null)
             {
-                planetaryObject.RotationUpdate(deltaTime);
+                foreach (IPlanetaryObject planetaryObject in planetaryObjects)
+                {
+                    if (planetaryObject != null)
+                    {
+                        planetaryObject.RotationUpdate(deltaTime);
+                    }
+                }
             }
-        }
-
-        public IEnumerator<IPlanetaryObject> GetEnumerator()
-        {
-            return planetaryObjectsList.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
