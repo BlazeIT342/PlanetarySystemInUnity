@@ -1207,8 +1207,7 @@ MonoBehaviour:
   planetarySystemFactory: {fileID: 1596632252073174186, guid: 4e9c1f575994d9e4280e04dd86c20753,
     type: 3}
   inputField: {fileID: 1940911187}
-  errorText: {fileID: 1433906188}
-  planetSystems: []
+  textMessage: {fileID: 1433906188}
 --- !u!4 &804831865
 Transform:
   m_ObjectHideFlags: 0
